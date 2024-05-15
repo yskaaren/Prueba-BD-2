@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Libros</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='style.css')}}"
+      type="text/css"
+    />
+  </head>
+
+  <body>
+    <div class="container">
+      <section class="libros">
+        <ul>
+          <h1>Libros</h1>
+          {% for datos in libros %}
+          <li id="valores-libro" class="items">
+            <normal>ID del libro: </normal>
+            <label id="id_libro">{{datos.libros.id_libro}}</label></br>
+            <normal>Titulo del libro: </normal>
+            <label id="titulo">{{datos.libros.titulo}}</label></br>
+  
+            <normal>ID del autor: </normal>
+            <label id="autor_id">{{datos.libros.autor_id}}</label></br>
+  
+            <normal>Precio del libro: </normal>
+            <label id="precio">{{datos.libros.precio}}</label></br>
+  
+            <normal>Stock del libro: </normal>
+            <label id="stock">{{datos.libros.stock}}</label></br>
+            
+            <div class="container-botones">
+              <div>
+                <button id="editar-libro" type="button">Editar libro</button>
+              </div>
+              <div class="eliminar_libro">
+                <form method="POST" action="/libros/eliminar" style="display: inline">
+                  <input type="hidden" name="id" value="{{datos._id}}">
+                  <button type="submit">Eliminar libro</button>
+                </form>
+              </div>
+            </div>
+            {%endfor%}
+          </li>
+        </ul>
+      </section>
+      <section class="agregar-libro">
+        <div class="formulario-libro">
+        <h1>Agregar libro</h1>
+        <form id="agregar_libro" method="POST" action="" style="display: inline">
+            <label>Ingrese ID libro</label/>
+            <div class="form-control">
+              <input id="id_libro_input" type="text" name="id_libro">
+            </div>
+            <label>Ingrese Titulo</label/>
+            <div class="form-control">
+              <input id="titulo_input" type="text"  name="titulo">
+            </div/>
+            <label>Ingrese ID de autor</label/>
+            <div class="form-control">
+              <input id="id_autor_input" type="text"  name="id_autor">
+            </div>
+            <label>Ingrese precio</label/>
+            <div class="form-control">
+              <input id="precio_input" type="text"  name="precio">
+              </div>
+              <label>Ingrese stock</label/>
+              <div class="form-control">
+                <input id="stock_input" type="text"  name="stock">
+              </div>
+            <button type="submit" >Agregar libro</button>
+          </form>
+      </div>
+      </section>
+    </div>
+      <script type="text/javascript" src="{{ url_for('static', filename='main.js')}}"></script>
+    </body>
+    </html>

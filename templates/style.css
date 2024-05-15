@@ -1,0 +1,119 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-family: "Roboto", sans-serif;
+}
+
+body {
+  normal {
+    font-weight: bold;
+  }
+  padding: 50px;
+}
+
+section {
+  padding: 24px;
+}
+
+.columna {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-gap: 50px;
+}
+
+.container {
+  display: flex;
+  flex-direction: row;
+  gap: 12px;
+}
+
+@media (max-width: 560px) {
+  .columna {
+    grid-template-columns: 1fr;
+  }
+}
+
+.autores,
+.clientes,
+.libros,
+.pedidos {
+  margin-left: 10px;
+}
+
+.libros,
+.autores,
+.clientes,
+.pedidos {
+  max-height: 800px;
+  width: 80%;
+  overflow: scroll;
+  overflow-x: hidden;
+  background-color: #fff;
+}
+
+.agregar-libro,
+.agregar-autor,
+.agregar-cliente,
+.agregar-pedido {
+  width: 400px;
+}
+
+.formulario-libro,
+.formulario-autor,
+.formulario-cliente,
+.formulario-pedido {
+  background-color: rgb(192, 148, 233);
+  display: flex;
+  padding: 20px;
+
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.formulario-libro,
+.formulario-autor,
+.formulario-cliente,
+.formulario-pedido > h1 {
+  margin-bottom: 18px;
+}
+
+.form-control {
+  display: flex;
+  gap: 4px;
+  margin-bottom: 8px;
+}
+
+.eliminar_libro,
+.eliminar_autor,
+.eliminar_cliente,
+.eliminar_pedido {
+  margin-bottom: 10px;
+}
+
+.actualizar_stock {
+  margin-block-end: 10px;
+}
+
+ul {
+  list-style-type: none;
+}
+
+li {
+  margin-bottom: 6px;
+}
+
+.items {
+  border-radius: 8px;
+  padding: 8px;
+  background-color: rgb(133, 215, 215);
+}
+
+.container-botones {
+  display: flex;
+  gap: 8px;
+}
