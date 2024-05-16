@@ -62,3 +62,10 @@ def insertar_pedido(pedido):
     except Exception as error:
         print("Error al insertar pedido", error)     
         return False   
+    
+def eliminar_pedido(id_pedido):
+    try:
+        coleccion_pedidos.delete_one({'_id': ObjectId(id_pedido)})
+        return True
+    except Exception as error:
+        print("Error al eliminar pedido", error) 

@@ -1,10 +1,7 @@
 from pymongo.mongo_client import MongoClient
 from pymongo.server_api import ServerApi
 
-# Agreguen si string de conexion
 url = "mongodb+srv://karengutierrez14:Naritaa14@serverinacap.8ri8bib.mongodb.net/?retryWrites=true&w=majority&appName=ServerInacap"
-
-# sample_restaurants.restaurants
 
 
 def conexion():

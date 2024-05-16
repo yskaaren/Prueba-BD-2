@@ -1,7 +1,7 @@
 from conectar import *
 from flask import *
 from flask import request
-from crud import insertar_libro, eliminar_libro, insertar_autor, eliminar_autor, insertar_cliente, eliminar_cliente
+from crud import insertar_libro, eliminar_libro, insertar_autor, eliminar_autor, insertar_cliente, eliminar_cliente, insertar_pedido, eliminar_pedido
 
 
 db = conexion()
@@ -77,6 +77,29 @@ def clientes():
     clientes_db = db.clientes.find()    
     return render_template('clientes.html', clientes = clientes_db)
 
+@app.route('/pedidos', methods=['GET','POST'])
+def pedidos():
+    if request.method == 'POST':
+        id_pedido = request.form['id_pedido']
+        id_cliente = request.form['id_cliente']
+        id_libro = request.form['id_libro']
+        cantidad = request.form['cantidad']
+        precio_total = request.form['precio_total']
+        
+    
+        nuevo_pedido = {
+            "pedidos": {
+                "id_pedido": id_pedido,
+                "id_cliente": id_cliente,
+                "id_libro": id_libro,
+                "cantidad": cantidad,
+                "precio_total": precio_total,
+            }
+        }
+        insertar_pedido(nuevo_pedido)
+    pedidos_db = db.pedidos.find()    
+    return render_template('pedidos.html', pedidos = pedidos_db)
+
 @app.route('/libros/eliminar', methods=['POST'])
 def eliminar_elemento_libro():
     if request.method == 'POST':
@@ -98,10 +121,9 @@ def eliminar_elemento_clientes():
         eliminar_cliente(id_cliente)
     return redirect('/clientes')
 
-@app.route('/pedidos')
-def pedidos():
-    pedidos = db.pedidos.find()    
-    return render_template('pedidos.html', pedidos = pedidos)
-
-if __name__ == '__main__':
-    app.run(debug=True)
+@app.route('/pedidos/eliminar', methods=['POST'])
+def eliminar_elemento_pedidos():
+    if request.method == 'POST':
+        id_pedido = request.form['id'] 
+        eliminar_pedido(id_pedido)
+    return redirect('/pedidos')

@@ -11,10 +11,16 @@
     />
   </head>
 
+  <header>
+
+    <h1>Biblioteca</h1>
+
+  </header>
+
   <body>
     <div class="columna">
       <ul>
-        <h1>Mostrando Libros</h1>
+        <a href="http://127.0.0.1:5000/libros"><h1>Mostrando Libros</h1></a>
         {% for datos in libros %}
         <li>
           <normal>ID del libro: </normal>
@@ -35,7 +41,7 @@
         {%endfor%}
       </ul>
       <ul>
-        <h1>Mostrando Autores</h1>
+        <a href="http://127.0.0.1:5000/autores"><h1>Mostrando Autores</h1></a>
         {%for datos in autores%}
         <li>
           <normal>ID del autor: </normal>
@@ -51,7 +57,7 @@
         {%endfor%}
       </ul>
       <ul>
-        <h1>Mostrando Clientes</h1>
+        <a href="http://127.0.0.1:5000/clientes"><h1>Mostrando Clientes</h1></a>
         {%for datos in clientes%}
         <li>
           <normal>ID del cliente: </normal>
@@ -66,7 +72,7 @@
         {%endfor%}
       </ul>
       <ul>
-        <h1>Mostrando Pedidos</h1>
+        <a href="http://127.0.0.1:5000/pedidos"><h1>Mostrando Pedidos</h1></a>
         {%for datos in pedidos%}
         <li>
           <normal>ID del pedido: </normal>
