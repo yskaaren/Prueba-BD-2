@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mostrar Datos</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='style.css')}}"
+      type="text/css"
+    />
+  </head>
+
+  <header>
+
+    <h1>Biblioteca</h1>
+
+  </header>
+
+  <body>
+    <div class="columna">
+      <ul>
+        <a href="http://127.0.0.1:5000/libros"><h1>Mostrando Libros</h1></a>
+        {% for datos in libros %}
+        <li>
+          <normal>ID del libro: </normal>
+          <label>{{datos.libros.id_libro}}</label></br>
+
+          <normal>Titulo del libro: </normal>
+          <label>{{datos.libros.titulo}}</label></br>
+
+          <normal>ID del autor: </normal>
+          <label>{{datos.libros.autor_id}}</label></br>
+
+          <normal>Precio del libro: </normal>
+          <label>{{datos.libros.precio}}</label></br>
+
+          <normal>Stock del libro: </normal>
+          <label>{{datos.libros.stock}}</label>
+        </li>
+        {%endfor%}
+      </ul>
+      <ul>
+        <a href="http://127.0.0.1:5000/autores"><h1>Mostrando Autores</h1></a>
+        {%for datos in autores%}
+        <li>
+          <normal>ID del autor: </normal>
+          <label>{{datos.autores.autor_id}}</label></br>
+
+          <normal>Nombre del autor: </normal>
+          <label>{{datos.autores.nombre_autor}}</label></br>
+
+          <normal>Nacionalidad del autor: </normal>
+          <label>{{datos.autores.nacionalidad}}</label>
+        </li>
+
+        {%endfor%}
+      </ul>
+      <ul>
+        <a href="http://127.0.0.1:5000/clientes"><h1>Mostrando Clientes</h1></a>
+        {%for datos in clientes%}
+        <li>
+          <normal>ID del cliente: </normal>
+          <label>{{datos.clientes.id_cliente}}</label></br>
+
+          <normal>Nombre del cliente: </normal>
+          <label>{{datos.clientes.nombre}}</label></br>
+
+          <normal>Email del cliente: </normal>
+          <label>{{datos.clientes.email}}</label>
+        </li>
+        {%endfor%}
+      </ul>
+      <ul>
+        <a href="http://127.0.0.1:5000/pedidos"><h1>Mostrando Pedidos</h1></a>
+        {%for datos in pedidos%}
+        <li>
+          <normal>ID del pedido: </normal>
+          <label>{{datos.pedidos.id_pedido}}</label></br>
+
+          <normal>ID del cliente: </normal>
+          <label>{{datos.pedidos.id_cliente}}</label></br>
+
+          <normal>ID del libro: </normal>
+          <label>{{datos.pedidos.id_libro}}</label></br>
+
+          <normal>Cantidad de libros: </normal>
+          <label>{{datos.pedidos.cantidad}}</label></br>
+
+          <normal>Precio total del pedido: </normal>
+          <label>{{datos.pedidos.precio_total}}</label>
+        </li>
+
+        {%endfor%}
+      </ul>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Clientes</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='style.css')}}"
+      type="text/css"
+    />
+  </head>
+
+  <body>
+    <div class="container">
+      <section class="pedidos">
+        <ul>
+          <h1>Pedidos</h1>
+          {% for datos in pedidos %}
+          <li id="valores-pedidos" class="items">
+            <normal>ID del cliente: </normal>
+            <label id="id_pedido">{{datos.pedidos.id_pedido}}</label></br>
+
+            <normal>ID del cliente: </normal>
+            <label id="pedido_cliente">{{datos.pedidos.id_cliente}}</label></br>
+  
+            <normal>ID del libro: </normal>
+            <label id="pedido_libro">{{datos.pedidos.id_libro}}</label></br>
+
+            <normal>Cantidad de libros: </normal>
+            <label id="cantidad_libro">{{datos.pedidos.cantidad}}</label></br>
+
+            <normal>Precio de libros: </normal>
+            <label id="precio_libro">{{datos.pedidos.precio_total}}</label></br>
+
+            <button id="editar-pedido" type="button">Editar pedido</button>
+            <div class="eliminar_pedido">
+              <form method="POST" action="/pedidos/eliminar" style="display: inline">
+                <input type="hidden" name="id" value="{{datos._id}}">
+                <button type="submit">Eliminar pedido</button>
+              </form>
+            </div>
+            {%endfor%}
+          </li>
+        
+         
+         
+        </ul>
+      </section>
+      <section class="agregar-pedido">
+        <div class="formulario-pedido">
+        <h1>Agregar pedido</h1>
+        <form id="agregar_pedido" method="POST" action="" style="display: inline">
+            <label>Ingrese ID pedido</label/>
+            <div class="form-control">
+              <input id="id_pedido_input" type="text" name="id_pedido">
+            </div>
+            <label>Ingrese ID del cliente</label/>
+            <div class="form-control">
+              <input id="id_cliente_input" type="text"  name="id_cliente">
+            </div/>
+            <label>Ingrese ID del libro</label/>
+            <div class="form-control">
+              <input id="id_libro_input" type="text"  name="id_libro">
+            </div>
+            <label>Ingrese cantidad</label/>
+              <div class="form-control">
+                <input id="cantidad_input" type="text"  name="cantidad">
+              </div>
+              <label>Ingrese precio total</label/>
+                <div class="form-control">
+                  <input id="precio_total_input" type="text"  name="precio_total">
+                </div>
+            <button type="submit" >Agregar pedido</button>
+          </form>
+      </div>
+      </section>
+    </div>
+    </body>
+    </html>

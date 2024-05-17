@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Autores</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='style.css')}}"
+      type="text/css"
+    />
+  </head>
+
+  <body>
+    <div class="container">
+      <section class="autores">
+        <ul>
+          <h1>Autores</h1>
+          {% for datos in autores %}
+          <li id="valores-autores" class="items">
+            <normal>ID del autor: </normal>
+            <label id="id_autor">{{datos.autores.autor_id}}</label></br>
+
+            <normal>Nombre del autor: </normal>
+            <label id="nombre_autor">{{datos.autores.nombre_autor}}</label></br>
+  
+            <normal>Nacionalidad autor: </normal>
+            <label id="nacionalidad">{{datos.autores.nacionalidad}}</label></br>
+
+            <button id="editar-autor" type="button">Editar autor</button>
+            <div class="eliminar_autor">
+              <form method="POST" action="/autores/eliminar" style="display: inline">
+                <input type="hidden" name="id" value="{{datos._id}}">
+                <button type="submit">Eliminar autor</button>
+              </form>
+            </div>
+            {%endfor%}
+          </li>
+        
+         
+         
+        </ul>
+      </section>
+      <section class="agregar-autor">
+        <div class="formulario-libro">
+        <h1>Agregar autor</h1>
+        <form id="agregar_autor" method="POST" action="" style="display: inline">
+            <label>Ingrese ID autor</label/>
+            <div class="form-control">
+              <input id="id_autor_input" type="text" name="autor_id">
+            </div>
+            <label>Ingrese nombre del autor</label/>
+            <div class="form-control">
+              <input id="nombre_autor_input" type="text"  name="nombre_autor">
+            </div/>
+            <label>Ingrese nacionalidad del autor</label/>
+            <div class="form-control">
+              <input id="nacionalidad_autor_input" type="text"  name="nacionalidad">
+            </div>
+            <button type="submit" >Agregar autor</button>
+          </form>
+      </div>
+      </section>
+    </div>
+    </body>
+    </html>

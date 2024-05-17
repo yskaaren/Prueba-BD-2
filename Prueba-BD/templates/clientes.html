@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Clientes</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='style.css')}}"
+      type="text/css"
+    />
+  </head>
+
+  <body>
+    <div class="container">
+      <section class="clientes">
+        <ul>
+          <h1>Clientes</h1>
+          {% for datos in clientes %}
+          <li id="valores-clientes" class="items">
+            <normal>ID del cliente: </normal>
+            <label id="id_cliente">{{datos.clientes.id_cliente}}</label></br>
+
+            <normal>Nombre del cliente: </normal>
+            <label id="nombre_cliente">{{datos.clientes.nombre}}</label></br>
+  
+            <normal>Email del cliente: </normal>
+            <label id="email">{{datos.clientes.email}}</label></br>
+
+            <button id="editar-cliente" type="button">Editar cliente</button>
+            <div class="eliminar_cliente">
+              <form method="POST" action="/clientes/eliminar" style="display: inline">
+                <input type="hidden" name="id" value="{{datos._id}}">
+                <button type="submit">Eliminar cliente</button>
+              </form>
+            </div>
+            {%endfor%}
+          </li>
+        
+         
+         
+        </ul>
+      </section>
+      <section class="agregar-cliente">
+        <div class="formulario-cliente">
+        <h1>Agregar cliente</h1>
+        <form id="agregar_cliente" method="POST" action="" style="display: inline">
+            <label>Ingrese ID cliente</label/>
+            <div class="form-control">
+              <input id="id_cliente_input" type="text" name="id_cliente">
+            </div>
+            <label>Ingrese nombre del cliente</label/>
+            <div class="form-control">
+              <input id="nombre_input" type="text"  name="nombre">
+            </div/>
+            <label>Ingrese email del cliente</label/>
+            <div class="form-control">
+              <input id="email_cliente_input" type="text"  name="email">
+            </div>
+            <button type="submit" >Agregar cliente</button>
+          </form>
+      </div>
+      </section>
+    </div>
+    </body>
+    </html>
